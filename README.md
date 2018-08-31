@@ -4,8 +4,16 @@ Prueba tecnica de ripio. Márquez Germán
 
 # Puesta en marcha
 Basta con ejecutar docker-compose para que los servicios se levanten y el entorno quede operativo.
+
+
 ```sh
 $ docker-compose up
+```
+Se puede parar los contenedores y retomar el estado anterior
+
+Para forzar el build
+```sh
+$ docker-compose up --build
 ```
 
 # Estructura
