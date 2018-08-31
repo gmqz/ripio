@@ -26,6 +26,8 @@ class TransactionResource(Resource):
         try:
             user = User.objects.get(id = ObjectId(get_jwt_identity()))
             data['value'] = round(float(data['value']),6)
+            if data['origin'] == data['target']:
+                return errorHandler(code = 400, message = "Las cuentas deben ser distintas");
             if data['value'] > 0:
                 origin = Account.objects.get(id = ObjectId(data['origin']))
                 target = Account.objects.get(id = ObjectId(data['target']))

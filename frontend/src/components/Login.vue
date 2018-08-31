@@ -45,7 +45,7 @@ export default {
     },
     computed: {
         state () {
-            return this.username && this.password
+            return !this.username || !this.password
         }
     },
     methods: {

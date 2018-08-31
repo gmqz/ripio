@@ -100,14 +100,13 @@ export default {
             let origin = this.origin
             let aux = this.myAccounts.find((item) => item.id === origin)
             this.value = parseFloat(this.value)
-            if (aux) {
-                this.currentBalance = aux.balance
-                return this.value > 0 &&
-                    parseFloat(aux.balance) >= parseFloat(this.value) &&
-                    this.origin &&
-                    this.target
-            }
-            return false
+            this.currentBalance = aux ? aux.balance : 0
+
+            return this.value > 0 &&
+                this.currentBalance >= this.value &&
+                this.origin &&
+                this.target &&
+                this.target !== this.origin
         },
         invalidFeedback () {
             if (!this.origin) {

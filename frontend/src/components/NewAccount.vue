@@ -57,11 +57,11 @@ export default {
     },
     computed: {
         state () {
-            return this.username &&
-                this.firstname &&
-                this.lastname &&
-                this.email &&
-                this.funds &&
+            return !this.username ||
+                !this.firstname ||
+                !this.lastname ||
+                !this.email ||
+                !this.funds ||
                 this.password
         }
     },
