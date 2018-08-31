@@ -62,7 +62,7 @@ export default {
                 !this.lastname ||
                 !this.email ||
                 !this.funds ||
-                this.password
+                !this.password
         }
     },
     methods: {
