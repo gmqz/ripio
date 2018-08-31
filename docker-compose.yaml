@@ -13,6 +13,8 @@ services:
             - "8181:8181"
         depends_on:
             - "mongo"
+        links:
+            - mongo
 
     mongo:
         image: mongo

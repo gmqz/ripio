@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py')
 
 #Connect to PyMongo(app)
-mongo = connect('ripio')
+mongo = connect('ripio', host='mongo')
 
 #Instance of flask_restful
 api = Api(app, prefix="/api")
