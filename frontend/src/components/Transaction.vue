@@ -61,7 +61,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="move in currentAccountMoves">
+                                    <tr v-for="move in currentAccountMoves" :key="move.id">
                                         <td class="text-center align-middle" v-html="move.icon">{{ move.icon }}</td>
                                         <td class="text-center align-middle" v-html="move.createdAt">{{ move.createdAt }}</td>
                                         <td class="align-middle">{{ move.reference }}</td>
@@ -98,25 +98,25 @@ export default {
     computed: {
         state () {
             let origin = this.origin
-            let aux = this.myAccounts.find((item) => item.id == origin)
-            this.value = parseFloat(this.value);
+            let aux = this.myAccounts.find((item) => item.id === origin)
+            this.value = parseFloat(this.value)
             if (aux) {
                 this.currentBalance = aux.balance
-                return  this.value > 0 &&
-                        parseFloat(aux.balance) >= parseFloat(this.value) &&
-                        this.origin &&
-                        this.target ? true : false
+                return this.value > 0 &&
+                    parseFloat(aux.balance) >= parseFloat(this.value) &&
+                    this.origin &&
+                    this.target
             }
             return false
         },
         invalidFeedback () {
             if (!this.origin) {
                 return 'Debe seleccionar una cuenta origen'
-            }else if (!this.target) {
+            } else if (!this.target) {
                 return 'Debe seleccionar una cuenta destino'
-            }else if (this.target == this.origin) {
+            } else if (this.target === this.origin) {
                 return 'La cuentas origen y destino no pueden ser la misma'
-            }else if (parseFloat(this.value) == 0) {
+            } else if (parseFloat(this.value) === 0) {
                 return 'Ingrese un monto'
             } else {
                 return 'Saldo insuficiente'
@@ -137,10 +137,10 @@ export default {
         currentAccountMoves () {
             if (this.origin) {
                 let origin = this.origin
-                let aux = this.myAccounts.find((item) => item.id == origin)
+                let aux = this.myAccounts.find((item) => item.id === origin)
                 return aux.transactions.map((item) => {
-                    item.createdAt = item.createdAt.replace(' ','<br><small>') + '</small>'
-                    if (item.target.id == origin){
+                    item.createdAt = item.createdAt.replace(' ', '<br><small>') + '</small>'
+                    if (item.target.id === origin) {
                         item.icon = '<i class="fas fa-long-arrow-alt-right text-success"></i>'
                         item.reference = item.origin.description
                         item.balance = item.targetBalance
@@ -154,7 +154,7 @@ export default {
             }
             return []
         }
-      },
+    },
     data () {
         return {
             origin: '',
@@ -185,7 +185,6 @@ export default {
                     })
                     store.dispatch('refreshUser')
                         .then(() => console.log(store.state.user))
-
                 })
                 .catch((error) => {
                     that.$swal({

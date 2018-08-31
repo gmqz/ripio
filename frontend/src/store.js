@@ -38,7 +38,6 @@ export const store = new Vuex.Store({
                 })
                 .catch((error) => {
                     throw error
-                    //throw new TypeError("Do not use the svg extension")
                 })
         },
         refreshToken () {

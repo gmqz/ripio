@@ -43,9 +43,9 @@ export default {
             password: ''
         }
     },
-    computed : {
+    computed: {
         state () {
-            return this.username && this.password ? false : true
+            return this.username && this.password
         }
     },
     methods: {
@@ -57,7 +57,7 @@ export default {
             })
                 .then(() => this.$router.push('/sys'))
                 .catch((error) => {
-                    let errorMessage = "Error en la comunicación"
+                    let errorMessage = 'Error en la comunicación'
                     if (error.response) {
                         errorMessage = error.response.data.message
                     }
@@ -65,12 +65,11 @@ export default {
                         toast: true,
                         position: 'top-end',
                         type: 'error',
-                        title: error.response.data.message,
+                        title: errorMessage,
                         showConfirmButton: false,
                         timer: 3000
                     })
                 })
-
         }
     },
     beforeMount () {

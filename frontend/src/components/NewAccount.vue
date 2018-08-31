@@ -55,14 +55,14 @@ export default {
             funds: ''
         }
     },
-    computed : {
+    computed: {
         state () {
-            return  this.username &&
-                    this.firstname &&
-                    this.lastname &&
-                    this.email &&
-                    this.funds &&
-                    this.password ? false : true
+            return this.username &&
+                this.firstname &&
+                this.lastname &&
+                this.email &&
+                this.funds &&
+                this.password
         }
     },
     methods: {
@@ -90,7 +90,7 @@ export default {
                     this.$router.push('/login')
                 })
                 .catch((error) => {
-                    let errorMessage = "Error en la comunicación"
+                    let errorMessage = 'Error en la comunicación'
                     if (error.response) {
                         errorMessage = error.response.data.message
                     }

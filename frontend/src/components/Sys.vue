@@ -50,12 +50,12 @@ export default {
     },
     mounted: function () {
         this.$store.dispatch('refreshUser')
-            .then(() => this.currentOptionComponent = 'v-dashboard')
+            .then(() => { this.currentOptionComponent = 'v-dashboard' })
     },
     methods: {
         logout () {
             this.$store.dispatch('removeToken')
-                .then(() => this.$router.push('/login'))
+                .then(() => { this.$router.push('/login') })
         }
     }
 }
